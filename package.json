@@ -1,0 +1,14 @@
+{
+  "name": "s3-thumbnail-generator",
+  "version": "1.0.0",
+  "description": "generate thumbnail of images in s3 bucket",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "bin": {
+    "s3-thumbnail-generate": "./index.js"
+  }
+}
