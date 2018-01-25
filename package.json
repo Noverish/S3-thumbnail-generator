@@ -1,6 +1,6 @@
 {
   "name": "s3-thumbnail-generator",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "generate thumbnail of images in s3 bucket",
   "main": "index.js",
   "scripts": {
@@ -9,6 +9,11 @@
   "author": "",
   "license": "ISC",
   "bin": {
-    "s3-thumbnail-generate": "./index.js"
+    "s3thumb": "./index.js"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.186.0",
+    "commander": "^2.13.0",
+    "sharp": "^0.19.0"
   }
 }
