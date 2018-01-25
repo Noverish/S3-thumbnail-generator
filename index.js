@@ -9,8 +9,8 @@ program
     .option('-i, --input-bucket [value]', 'Input bucket name')
     .option('-o, --output-bucket [value]', 'Output bucket name', null)
     .option('-n, --num [value]', 'Max number of creating thumbnail (for test)', Number.MAX_SAFE_INTEGER)
-    .option('-w, --width [value]', 'Width of thumbnail (default: 200)', 200)
-    .option('-h, --height [value]', 'Height of thumbnail (default: 200)', 200)
+    .option('-w, --width [value]', 'Width of thumbnail', 200)
+    .option('-h, --height [value]', 'Height of thumbnail', 200)
     .parse(process.argv);
 
 const PROFILE = program.profile;
@@ -158,10 +158,14 @@ function processBuffer(key, buffer) {
 }
 
 function putObject(key, buffer) {
+    const ext = key.substr(key.lastIndexOf('.') + 1).toLowerCase();
+    const contentType = (ext === 'png') ? 'image/png' : 'image/jpeg';
+
     const params = {
         Body: buffer,
         Bucket: OUTPUT_BUCKET,
-        Key: key
+        Key: key,
+        ContentType: contentType
     };
 
     s3.putObject(params, function (err, data) {
